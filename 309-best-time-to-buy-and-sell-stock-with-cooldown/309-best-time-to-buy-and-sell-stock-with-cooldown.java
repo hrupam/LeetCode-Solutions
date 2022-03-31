@@ -6,20 +6,10 @@ class Solution {
 
 
         for (int ind = n - 1; ind >= 0; ind--) {
-            for (int canBuy = 0; canBuy <= 1; canBuy++) {
+            
+            dp[ind][1] = Math.max(-arr[ind] + dp[ind + 1][0], dp[ind + 1][1]);
 
-                int profit = 0;
-
-                //can buy
-                if (canBuy == 1)
-                    profit = Math.max(-arr[ind] + dp[ind + 1][0], dp[ind + 1][1]);
-
-                    //cannot buy -> sell
-                else
-                    profit = Math.max(arr[ind] + dp[ind + 2][1], dp[ind + 1][0]);
-
-                dp[ind][canBuy] = profit;
-            }
+            dp[ind][0] = Math.max(arr[ind] + dp[ind + 2][1], dp[ind + 1][0]); 
         }
 
         return dp[0][1];
