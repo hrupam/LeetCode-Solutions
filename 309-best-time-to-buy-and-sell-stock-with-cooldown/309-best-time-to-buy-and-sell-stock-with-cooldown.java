@@ -1,27 +1,28 @@
 class Solution {
     public int maxProfit(int[] prices) {
         int n = prices.length;
-        int[][] dp = new int[n][2];
-        for (int[] x : dp) Arrays.fill(x, -1);
+        int[][] dp = new int[n + 2][2];
+        int[] arr = prices;
 
-        int res = f(0, 1, prices, n, dp);
-        return res;
+
+        for (int ind = n - 1; ind >= 0; ind--) {
+            for (int canBuy = 0; canBuy <= 1; canBuy++) {
+
+                int profit = 0;
+
+                //can buy
+                if (canBuy == 1)
+                    profit = Math.max(-arr[ind] + dp[ind + 1][0], dp[ind + 1][1]);
+
+                    //cannot buy -> sell
+                else
+                    profit = Math.max(arr[ind] + dp[ind + 2][1], dp[ind + 1][0]);
+
+                dp[ind][canBuy] = profit;
+            }
+        }
+
+        return dp[0][1];
     }
     
-    private static int f(int ind, int canBuy, int[] arr, int n, int[][] dp) {
-        if (ind >= n) return 0;
-        if (dp[ind][canBuy] != -1) return dp[ind][canBuy];
-
-        int profit = 0;
-
-        //can buy
-        if (canBuy == 1)
-            profit = Math.max(-arr[ind] + f(ind + 1, 0, arr, n, dp), f(ind + 1, 1, arr, n, dp));
-
-            //cannot buy -> sell
-        else
-            profit = Math.max(arr[ind] + f(ind + 2, 1, arr, n, dp), f(ind + 1, 0, arr, n, dp));
-
-        return dp[ind][canBuy] = profit;
-    }
 }
