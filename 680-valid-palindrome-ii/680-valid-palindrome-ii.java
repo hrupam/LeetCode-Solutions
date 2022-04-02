@@ -4,7 +4,7 @@ class Solution {
         int r=s.length()-1;
         while(l<r){
             if(s.charAt(l)!=s.charAt(r))
-                return (isPalin(s,l+1,r)) | (isPalin(s,l,r-1));
+                return (isPalin(s,l+1,r)) || (isPalin(s,l,r-1));
 
             l++; r--;
         }
