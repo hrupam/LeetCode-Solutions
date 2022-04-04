@@ -10,34 +10,35 @@
  */
 class Solution {
     public ListNode swapNodes(ListNode head, int k) {
-        ListNode t=head;
-        List<Integer> list=new ArrayList<>();
-        while(t!=null){
-            list.add(t.val);
-            t=t.next;
-        }
+        int i=k-1;
+        int j=getSize(head)-k;
+        ListNode l=getNode(head,i);
+        ListNode r=getNode(head,j);
         
-        reverse(list,k-1,list.size()-k);
-        ListNode newll=null;
-        t=newll;
-        for(int i=0;i<list.size();i++){
-            if(t==null){
-                t=new ListNode(list.get(i));
-                newll=t;
-            }
-            else{
-                t.next=new ListNode(list.get(i));
-                t=t.next;
-            }
-        }
+        int t=l.val;
+        l.val=r.val;
+        r.val=t;
         
-        return newll;
+        return head;
     }
     
-    private static void reverse(List<Integer> list, int i, int j){
-        Integer t=list.get(i);
-        list.set(i, list.get(j));
-        list.set(j, t);
+    private static int getSize(ListNode root){
+        int ctr=0;
+        while(root!=null){
+            ctr++;
+            root=root.next;
+        }
+        return ctr;
+    }
+    
+    private static ListNode getNode(ListNode root, int index){
+        int ctr=0;
+        while(root!=null){
+            ctr++;
+            if(ctr==index+1) break;
+            root=root.next;
+        }
+        return root;
     }
     
     
