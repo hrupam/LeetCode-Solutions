@@ -9,10 +9,7 @@ class Solution {
     }
     
     static int f(int i, int lasti, int[] a, int n, int[][] dp){ 
-        if(i==n-1){
-            if(lasti==-1 || a[n-1]>a[lasti]) return 1;
-            return 0;
-        }
+        if(i==n) return 0;
         
         if(dp[i][lasti+1]!=-1) return dp[i][lasti+1];
         
