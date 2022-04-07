@@ -1,6 +1,6 @@
 class Solution {
     public int lastStoneWeight(int[] stones) {
-        List<Integer> list=Arrays.stream(stones).boxed().collect(Collectors.toList());
+        List<Integer> list=IntStream.of(stones).boxed().collect(Collectors.toList());
         
         while(list.size()>1){
             Collections.sort(list, Comparator.reverseOrder());
