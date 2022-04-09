@@ -25,12 +25,20 @@ class Solution {
         }
         if(i<0){
             if(k<0) return 0;
-            if(String.valueOf(s2).substring(0,j+1).equals(String.valueOf(s3).substring(0,k+1))) return 1;
+            while(j>=0 && k>=0){
+                if(s2[j]!=s3[k]) return 0;
+                j--; k--;
+            }
+            if(j<0 && k<0) return 1;
             return 0;
         }
         if(j<0){
             if(k<0) return 0;
-            if(String.valueOf(s1).substring(0,i+1).equals(String.valueOf(s3).substring(0,k+1))) return 1;
+            while(i>=0 && k>=0){
+                if(s1[i]!=s3[k]) return 0;
+                i--; k--;
+            }
+            if(i<0 && k<0) return 1;
             return 0;
         }
         if(k<0){
