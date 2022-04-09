@@ -1,14 +1,15 @@
 class Solution {
     public boolean isInterleave(String s1, String s2, String s3) {
-        
-        char[] s11=s1.toCharArray();
-        char[] s22=s2.toCharArray();
-        char[] s33=s3.toCharArray();
-        
         int n=s1.length();
         int m=s2.length();
         int p=s3.length();
         
+        if(n+m!=p) return false;
+        
+        char[] s11=s1.toCharArray();
+        char[] s22=s2.toCharArray();
+        char[] s33=s3.toCharArray();
+
         int[][][] dp=new int[n][m][p];
         for(int[][] x:dp) for(int[] y:x) Arrays.fill(y,-1);
         
@@ -18,7 +19,6 @@ class Solution {
     }
     
     private static int f(int i, int j, int k, char[] s1, char[] s2, char[] s3, int[][][] dp){
-        
         if(i<0 && j<0){
             if(k<0) return 1;
             return 0;
