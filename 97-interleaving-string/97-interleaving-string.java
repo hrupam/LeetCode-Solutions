@@ -35,7 +35,7 @@ class Solution {
         }
         if(k<0){
             if(i>=0) return 0;
-            if(j>=0) return 1;
+            if(j>=0) return 0;
             return 1;
         }
         if(dp[i][j][k]!=-1) return dp[i][j][k];
