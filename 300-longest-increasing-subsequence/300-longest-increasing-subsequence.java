@@ -9,14 +9,14 @@ class Solution {
                 temp.add(nums[i]); len++;
             }
             else{
-                int ind=searchInsertPos(temp, nums[i]);
+                int ind=lowerBound(temp, nums[i]);
                 temp.set(ind, nums[i]);
             }
         }
         return len;
     }
     
-    private static int searchInsertPos(List<Integer> list, int x){
+    private static int lowerBound(List<Integer> list, int x){
         int l=0;
         int r=list.size()-1;
         while(l<=r){
