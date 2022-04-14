@@ -24,7 +24,6 @@ class Solution {
             return 0;
         }
         if(i<0){
-            if(k<0) return 0;
             while(j>=0 && k>=0){
                 if(s2[j]!=s3[k]) return 0;
                 j--; k--;
@@ -33,7 +32,6 @@ class Solution {
             return 0;
         }
         if(j<0){
-            if(k<0) return 0;
             while(i>=0 && k>=0){
                 if(s1[i]!=s3[k]) return 0;
                 i--; k--;
