@@ -14,14 +14,14 @@ class Solution {
                         maxLIS=Math.max(maxLIS,dp[i]);
                         count[i]=count[j];
                     }
-                    else if(dp[j]+1==dp[i]) count[i]+=count[j];
+                    else if(dp[j]+1==dp[i]) count[i]=count[i]+count[j];
                 }
             }
         }
         
         int ctr=0;
         for(int i=0;i<n;i++){
-            if(dp[i]==maxLIS) ctr+=count[i];
+            if(dp[i]==maxLIS) ctr=ctr+count[i];
         }
         
         return ctr;
