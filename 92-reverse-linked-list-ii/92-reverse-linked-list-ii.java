@@ -37,13 +37,4 @@ class Solution {
         head.val=tail.val;
         tail.val=t;
     }
-    
-    private static int getSize(ListNode head){
-        int ctr=0;
-        while(head!=null){
-            ctr++;
-            head=head.next;
-        }
-        return ctr;
-    }
 }
