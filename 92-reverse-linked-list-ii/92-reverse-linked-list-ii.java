@@ -14,7 +14,7 @@ class Solution {
         
         ListNode temp=head;
         
-        int n=getSize(head);
+        int n=right;
         ListNode[] arr=new ListNode[n];
         for(int i=0;i<n;i++){
             arr[i]=temp;
@@ -22,7 +22,7 @@ class Solution {
         }
         
         int i=left-1;
-        int j=right-1;
+        int j=n-1;
         while(i<j){
             ListNode a=arr[i];
             ListNode b=arr[j];
