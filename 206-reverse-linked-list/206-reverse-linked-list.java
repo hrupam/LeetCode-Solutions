@@ -29,11 +29,7 @@ class Solution {
             swap(a,b);
             i++; j--;
         }
-        
-        return head;
-        
-        
-        
+        return head;   
     }
     
     private static void swap(ListNode head, ListNode tail){
