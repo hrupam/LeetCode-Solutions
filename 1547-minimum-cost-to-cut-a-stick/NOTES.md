@@ -13,9 +13,7 @@ return dp[i][j]=mini;
 }
 ```
 ​
-**Call f(1,N-2,cuts,dp)**
-​
-where, *dp[][] is of size N, N=length of array after appending 0 and n (length of stick).*
+**Call f(1,N-2,cuts,dp)**  where, *dp[][] is of size N, N=length of array after appending 0 and n (length of stick).*
 ​
 ​
 ​
