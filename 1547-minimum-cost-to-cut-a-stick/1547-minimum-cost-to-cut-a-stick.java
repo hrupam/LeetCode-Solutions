@@ -7,22 +7,22 @@ class Solution {
         list.add(n);
         cuts=list.stream().mapToInt(i->i).toArray();
         
-        int len=cuts.length;
-        int[][] dp=new int[len][len];
-        for(int[] x:dp) Arrays.fill(x,-1);
+        int N=cuts.length;
         
-        return f(1,len-2,cuts,dp);   
-    }
-    
-    private static int f(int i, int j, int[] cuts, int[][] dp){
-        if(i>j) return 0;
-        if(dp[i][j]!=-1) return dp[i][j];
-        
-        int mini=(int)1e9;
-        for(int k=i;k<=j;k++){
-            int cost=(cuts[j+1]-cuts[i-1]) + f(i,k-1,cuts,dp)+f(k+1,j,cuts,dp);
-            mini=Math.min(mini, cost);
+        int[][] dp=new int[N][N];
+            
+        for(int i=N-2;i>=1;i--){
+            for(int j=i;j<=N-2;j++){
+                
+                int mini=(int)1e9;
+                
+                for(int k=i;k<=j;k++){
+                    int cost=(cuts[j+1]-cuts[i-1]) + dp[i][k-1]+dp[k+1][j];
+                    mini=Math.min(mini, cost);
+                }
+                dp[i][j]=mini;
+            }
         }
-        return dp[i][j]=mini;
+        return dp[1][N-2];
     }
 }
