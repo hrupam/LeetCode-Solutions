@@ -1,9 +1,11 @@
 class Solution {
     public int maxCoins(int[] nums) {
         int N=nums.length;
-        List<Integer> list=Arrays.stream(nums).boxed().collect(Collectors.toList());
-        list.add(0,1);
+        List<Integer> list=new ArrayList<>();
         list.add(1);
+        for(int x:nums) list.add(x);
+        list.add(1);
+        
         nums=list.stream().mapToInt(i->i).toArray();
         
         int[][] dp=new int[N+2][N+2];
