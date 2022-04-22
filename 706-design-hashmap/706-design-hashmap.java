@@ -1,21 +1,6 @@
-class MyHashMap {
-
-    private int[] map;
-    public MyHashMap() {
-        map=new int[(int)1e6+1];
-        Arrays.fill(map,-1);
-    }
-    
-    public void put(int key, int value) {
-        map[key]=value;
-    }
-    
+class MyHashMap extends HashMap<Integer,Integer> {
     public int get(int key) {
-        return map[key];
-    }
-    
-    public void remove(int key) {
-        map[key]=-1;
+        return super.getOrDefault(key,-1);
     }
 }
 
