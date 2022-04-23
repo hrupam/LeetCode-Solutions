@@ -12,7 +12,7 @@ class Solution {
         if(i==n) return 0;
         if(dp[i][deadline]!=-1) return dp[i][deadline];
         
-        if(deadline>=days[i]) return f(i+1,deadline,n,days,costs,dp);
+        if(deadline>=days[i]) return dp[i][deadline]=f(i+1,deadline,n,days,costs,dp);
         
         int mini=(int)1e9;
         for(int j=0;j<=2;j++){
