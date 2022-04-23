@@ -2,23 +2,23 @@ class Solution {
     public int change(int amount, int[] coins) {
         int n=coins.length;
         int[][] dp=new int[n][amount+1];
-        for(int[] x:dp) Arrays.fill(x,-1);
         
-        return f(n-1,coins,amount,dp);
-    }
-    
-    private static int f(int i, int[] coins, int amount, int[][] dp){
-        if(amount==0) return 1;
-        if(i==0){
-            if(amount%coins[0]==0) return 1;
-            return 0;
+        for(int i=0;i<n;i++) dp[i][0]=1;
+        for(int amt=1;amt<=amount;amt++){
+            if(amt%coins[0]==0) dp[0][amt]=1;
+            else dp[0][amt]=0;
         }
-        if(dp[i][amount]!=-1) return dp[i][amount];
         
-        int pick=0;
-        if(amount>=coins[i]) pick=f(i,coins,amount-coins[i],dp);
-        int notpick=f(i-1,coins,amount,dp);
+        for(int i=1;i<n;i++){
+            for(int amt=1;amt<=amount;amt++){
+                int pick=0;
+                if(amt>=coins[i]) pick=dp[i][amt-coins[i]];
+                int notpick=dp[i-1][amt];
+
+                dp[i][amt]=pick+notpick;
+            }
+        }
         
-        return dp[i][amount]=pick+notpick;
+        return dp[n-1][amount];
     }
 }
