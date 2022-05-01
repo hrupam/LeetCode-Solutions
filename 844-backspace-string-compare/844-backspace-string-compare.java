@@ -8,6 +8,7 @@ class Solution {
             if(c!='#') sStack.offerLast(c);
             else sStack.pollLast();
         }
+        
         for(int i=0;i<t.length();i++){
             char c=t.charAt(i);
             if(c!='#') tStack.offerLast(c);
@@ -16,13 +17,8 @@ class Solution {
         
         if(sStack.size()!=tStack.size()) return false;
         
-        List<Character> ss=new ArrayList<>(sStack);
-        List<Character> tt=new ArrayList<>(tStack);
-        int i=0; int j=0;
-        while(i<ss.size() && j<tt.size()){
-            if(ss.get(i)!=tt.get(j)) return false;
-            i++; j++;
-        }
+        while(sStack.size()!=0) if(sStack.pollLast()!=tStack.pollLast()) return false;
+        
         return true;
     }
 }
