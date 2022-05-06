@@ -1,7 +1,7 @@
 class Solution {
     public List<List<String>> partition(String s) {
         int n=s.length();
-        List<List<String>> wrappedList = new LinkedList<>();
+        List<List<String>> wrappedList = new ArrayList<>();
         f(s, 0, new ArrayList<>(), wrappedList, n);
         return wrappedList;
     }
