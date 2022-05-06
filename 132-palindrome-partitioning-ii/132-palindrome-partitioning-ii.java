@@ -4,7 +4,7 @@ class Solution {
         int[] dp=new int[n];
         Arrays.fill(dp,-1);
         
-        return f(0,s,n,dp);
+        return f(0,s,n,dp)-1;
     }
     
     static int f(int i, String s, int n, int[] dp){
@@ -14,9 +14,7 @@ class Solution {
         int mini=(int)1e9;
         for(int j=i;j<n;j++){
             if(isPalindrome(s,i,j)){
-                int cut=0;
-                if(j==n-1) cut=f(j+1,s,n,dp);
-                else cut=1+f(j+1,s,n,dp);
+                int cut=1+f(j+1,s,n,dp);
                 mini=Math.min(mini,cut);
             }
         }
@@ -24,8 +22,10 @@ class Solution {
     }
     
     static boolean isPalindrome(String s, int l, int r){
-        if(l>=r) return true;
-        if(s.charAt(l)!=s.charAt(r)) return false;
-        return isPalindrome(s,l+1,r-1);
+        while(l<r){
+            if(s.charAt(l)!=s.charAt(r)) return false;
+            l++; r--;
+        }
+        return true;
     }
 }
