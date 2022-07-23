@@ -18,7 +18,12 @@ class Solution {
             }
         }
 
-        return stack.stream().mapToInt(Integer::intValue).toArray();
+        //stack to int[]
+        int[] arr = new int[stack.size()];
+        int i = 0;
+        while (stack.size() != 0) arr[i++] = stack.pollFirst();
+
+        return arr;
     }
 
     //returns true if cycle exists + maintains topological ordering
