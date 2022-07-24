@@ -4,12 +4,22 @@ class Solution {
         int x = 0;
         int y = 0;
         for (char c : moves.toCharArray()) {
-            if (c == 'R') x += 1; 
-            else if (c == 'L') x -= 1; 
-            else if (c == 'U') y += 1; 
-            else if (c == 'D') y -= 1;
+            switch (c) {
+                case 'R':
+                    x += 1;
+                    break;
+                case 'L':
+                    x -= 1;
+                    break;
+                case 'U':
+                    y += 1;
+                    break;
+                case 'D':
+                    y -= 1;
+                    break;
+            }
         }
-        if (x == 0 && y == 0) return true;
-        return false;
+
+        return (x == 0 && y == 0);
     }
 }
