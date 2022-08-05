@@ -7,11 +7,9 @@ class Solution {
         dp[0] = 1;
 
         for (int tar = 1; tar <= target; tar++) {
-            int ctr = 0;
             for (int i = 0; i < n; i++) {
-                if (tar >= nums[i]) ctr += dp[tar - nums[i]];
+                if (tar >= nums[i]) dp[tar] += dp[tar - nums[i]];
             }
-            dp[tar] = ctr;
         }
 
         return dp[target];
