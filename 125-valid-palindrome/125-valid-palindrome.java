@@ -1,6 +1,7 @@
 class Solution {
 
     public boolean isPalindrome(String s) {
+        if (s == null || s.isEmpty()) return true;
         return f(0, s.length() - 1, s.toCharArray());
     }
 
