@@ -19,7 +19,7 @@ class Solution {
     }
 
     private void bfs(int i, int j, boolean[][] vis, char[][] grid, int m, int n) {
-        Deque<Pair> queue = new LinkedList<>();
+        Queue<Pair> queue = new LinkedList<>();
 
         int[][] deviations = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
 
