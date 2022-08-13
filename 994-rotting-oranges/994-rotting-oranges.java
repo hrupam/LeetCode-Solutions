@@ -6,12 +6,14 @@ class Solution {
 
         Queue<Pair> queue = new LinkedList<>();
         int freshCtr = 0;
+        
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 2) queue.add(new Pair(i, j, 0));
                 if (grid[i][j] == 1) freshCtr++;
             }
         }
+        
         int minutes = 0;
         while (!queue.isEmpty()) {
             Pair p = queue.poll();
