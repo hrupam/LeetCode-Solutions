@@ -11,10 +11,11 @@ class Solution {
 
         int ctr = 0;
         int len = n;
+        int half = n / 2;
         for (int f : frequencies) {
             len -= f;
             ctr++;
-            if (len <= n / 2) return ctr;
+            if (len <= half) return ctr;
         }
         return ctr;
     }
