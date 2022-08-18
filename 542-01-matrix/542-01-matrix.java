@@ -6,12 +6,12 @@ class Solution {
 
         boolean[][] vis = new boolean[m][n];
         int[][] dist = new int[m][n];
-        Queue<Pair> Q = new LinkedList<>();
+        Deque<Pair> Q = new ArrayDeque<>();
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (mat[i][j] == 0) {
-                    Q.add(new Pair(i, j, 0));
+                    Q.offerLast(new Pair(i, j, 0));
                     vis[i][j] = true;
                 }
             }
@@ -19,7 +19,7 @@ class Solution {
 
         int[][] deviations = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
         while (!Q.isEmpty()) {
-            Pair p = Q.poll();
+            Pair p = Q.pollFirst();
             int i = p.i;
             int j = p.j;
             int dt = p.dist;
@@ -29,7 +29,7 @@ class Solution {
                 int ni = i + d[0];
                 int nj = j + d[1];
                 if (ni >= 0 && ni < m && nj >= 0 && nj < n && !vis[ni][nj]) {
-                    Q.add(new Pair(ni, nj, dt + 1));
+                    Q.offerLast(new Pair(ni, nj, dt + 1));
                     vis[ni][nj] = true;
                 }
             }
