@@ -6,13 +6,13 @@ class Solution {
         Map<Integer, Integer> map = new HashMap<>();
         for (int x : arr) map.put(x, map.getOrDefault(x, 0) + 1);
 
-        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(map.entrySet());
-        Collections.sort(list, (e1, e2) -> e2.getValue() - e1.getValue());
+        List<Integer> frequencies = new ArrayList<>(map.values());
+        Collections.sort(frequencies, (a, b) -> b - a);
 
         int ctr = 0;
         int len = n;
-        for (Map.Entry<Integer, Integer> e : list) {
-            len -= e.getValue();
+        for (int f : frequencies) {
+            len -= f;
             ctr++;
             if (len <= n / 2) return ctr;
         }
